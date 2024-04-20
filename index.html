@@ -10,7 +10,7 @@
     
   <nav>
     <div class="main-nav container flex">
-        <a href="#" class="company-logo">
+        <a href="#" onclick="reload()" class="company-logo">
             <img src="./assets/logo.png" alt="company logo">
            
         </a>
@@ -27,6 +27,7 @@
         </div>
 
         <div class="search-bar flex">
+         <div id="voice-input-icon" class="microphone-icon"></div> 
             <input id="search-text" type="text" class="news-input" placeholder="e.g. Science">
             <button id="search-button" class="search-button">Search</button>
         </div>
@@ -61,8 +62,7 @@
         
      </div>
   </template>
-  <script src="script.js">
-
-    </script>
+  
+  <script src="script.js"> </script>
 </body>
 </html>

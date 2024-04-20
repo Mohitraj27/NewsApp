@@ -5,7 +5,7 @@ const url ="https://newsapi.org/v2/everything?q=";
 window.addEventListener('load',()=> fetchNews("India"));
 
 function reload() {
-    window.location.reload();
+    window.location.reload()
 }
 async function fetchNews (query) {
    const res= await fetch(`${url}${query}&apiKey=${API_KEY}`);
@@ -16,6 +16,8 @@ async function fetchNews (query) {
 function  bindData(articles) {
     const cardsContainer =document.getElementById('cards-container');
     const newsCardTemplate = document.getElementById('template-news-card');
+    
+    const voiceInputIcon=document.getElementById('voice-input-icon');
 
     /* below code is written cause 
     whenever binds data is called i'am making the 
@@ -35,7 +37,30 @@ function  bindData(articles) {
         fillDataInCard(cardClone,article);
         cardsContainer.appendChild(cardClone)
     });
-    
+
+    voiceInputIcon.addEventListener('click', () => {
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US'; // Set the language for recognition
+
+            // Start recognition
+            recognition.start();
+
+            // Handle recognition result
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                searchText.value = transcript; // Set the transcript as the search text
+                fetchNews(transcript) // this will automatically fetch the news transcript generated from user's voice 
+            };
+
+            // Handle recognition error
+            recognition.onerror = (event) => {
+                alert('Voice recognition error: ' + event.error);
+            };
+        } else {
+            alert('Speech recognition not supported in this browser.');
+        }
+    });
 }
 
 function  fillDataInCard(cardClone,article) {

@@ -85,7 +85,7 @@ nav{
     gap: 8px;
 }
 .news-input{
-    width: 200px;
+    width: 500px;
     height: 100%;
     padding-inline: 12px;
     border-radius: 4px;
@@ -101,6 +101,27 @@ nav{
     border-radius: 4px;
     font-family: "Roboto", sans-serif;
 }
+
+.microphone-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #4285f4; /* Google's microphone icon color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px; /* Margin to space it from the input */
+    cursor: pointer; /* Add pointer cursor for interaction */
+}
+
+.microphone-icon::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff; /* Inner circle color */
+}
+
 
 .search-button:hover{
     background-color: var(--accent-color-dark);
