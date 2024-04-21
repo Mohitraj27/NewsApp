@@ -1,4 +1,4 @@
-const API_KEY="92c99c5b03cd457a94ae84432d7afff2";
+const API_KEY="7f23546cd35347bdaee7ac02dfd5a119";
 
 const url ="https://newsapi.org/v2/everything?q=";
 
@@ -19,6 +19,7 @@ function  bindData(articles) {
     
     const voiceInputIcon=document.getElementById('voice-input-icon');
 
+    
     /* below code is written cause 
     whenever binds data is called i'am making the 
     conatiner empty so that whenever api gets called 
@@ -41,7 +42,10 @@ function  bindData(articles) {
     voiceInputIcon.addEventListener('click', () => {
         if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
             const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            recognition.lang = 'en-US'; // Set the language for recognition
+            
+            const selectedLanguage = document.getElementById('languageSelector').value;
+
+            recognition.lang = selectedLanguage === 'english'?'en-US':'hi-IN'; // Set the language for recognition
 
             // Start recognition
             recognition.start();
